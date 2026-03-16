@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manish Pokhrel | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#010409;
+color:#e2e8f0;
+overflow-x:hidden;
+}
+
+/* NEW HACKER BACKGROUND */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.95)),
+radial-gradient(circle at 20% 30%,rgba(56,189,248,0.15),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(99,102,241,0.15),transparent 40%);
+z-index:-2;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+width:100%;
+background:rgba(2,6,23,0.85);
+backdrop-filter:blur(10px);
+padding:18px 50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:10;
+}
+
+nav b{
+font-size:20px;
+color:#38bdf8;
+}
+
+nav a{
+color:#e2e8f0;
+text-decoration:none;
+margin-left:25px;
+font-size:14px;
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+bottom:-5px;
+left:0;
+width:0%;
+height:2px;
+background:#38bdf8;
+transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* HEADER */
+
+header{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.profile-container{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:25px;
+position:relative;
+}
+
+.profile-container::before{
+content:"";
+position:absolute;
+width:220px;
+height:220px;
+border-radius:50%;
+background:linear-gradient(45deg,#38bdf8,#6366f1,#06b6d4,#38bdf8);
+animation:rotate 6s linear infinite;
+z-index:-1;
+}
+
+.profile-img{
+width:200px;
+height:200px;
+border-radius:50%;
+border:4px solid #38bdf8;
+padding:6px;
+background:#020617;
+box-shadow:0 0 25px #38bdf8;
+object-fit:cover;
+}
+
+@keyframes rotate{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+h1{
+font-size:52px;
+background:linear-gradient(90deg,#38bdf8,#6366f1,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.typing{
+margin-top:10px;
+color:#94a3b8;
+}
+
+.btn{
+margin-top:25px;
+padding:14px 30px;
+border-radius:30px;
+background:linear-gradient(135deg,#2563eb,#06b6d4);
+color:white;
+text-decoration:none;
+font-weight:600;
+}
+
+/* SECTIONS */
+
+section{
+padding:100px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+font-size:32px;
+margin-bottom:50px;
+}
+
+/* ABOUT */
+
+.about-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+.about-card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:14px;
+margin-bottom:15px;
+}
+
+/* SKILLS */
+
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.skill-card{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:16px;
+}
+
+/* PROJECTS */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.project-card{
+background:rgba(255,255,255,0.05);
+border-radius:16px;
+padding:25px;
+transition:.3s;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.project-card:hover{
+transform:translateY(-10px);
+box-shadow:0 10px 25px rgba(56,189,248,0.3);
+}
+
+.project-icon{
+font-size:30px;
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+.project-tags span{
+background:#1e293b;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+margin-right:6px;
+}
+
+.project-links a{
+display:inline-block;
+margin-top:10px;
+margin-right:10px;
+font-size:13px;
+color:#38bdf8;
+text-decoration:none;
+}
+
+/* TIMELINE */
+
+.timeline{
+position:relative;
+max-width:900px;
+margin:auto;
+}
+
+.timeline::after{
+content:'';
+position:absolute;
+width:3px;
+background:#38bdf8;
+top:0;
+bottom:0;
+left:50%;
+}
+
+.timeline-container{
+padding:20px 40px;
+position:relative;
+width:50%;
+}
+
+.timeline-container.left{left:0;}
+.timeline-container.right{left:50%;}
+
+.timeline-content{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:12px;
+}
+
+.timeline-container::after{
+content:'';
+position:absolute;
+width:18px;
+height:18px;
+background:#38bdf8;
+border-radius:50%;
+top:25px;
+right:-9px;
+}
+
+.timeline-container.right::after{
+left:-9px;
+}
+
+/* CONTACT */
+
+.socials{
+text-align:center;
+}
+
+.socials a{
+display:inline-flex;
+justify-content:center;
+align-items:center;
+width:55px;
+height:55px;
+margin:10px;
+border-radius:50%;
+background:#1e293b;
+color:white;
+font-size:22px;
+transition:0.3s;
+}
+
+.socials a:hover{
+background:#38bdf8;
+transform:scale(1.15);
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#64748b;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="network"></canvas>
+
+<nav>
+<b>Manish</b>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#journey">Journey</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<header>
+
+<div class="profile-container">
+<img src="profile.png" class="profile-img">
+</div>
+
+<h1>Manish Pokhrel</h1>
+
+<div class="typing" id="typing"></div>
+
+<a class="btn" href="#contact">Contact Me</a>
+
+</header>
+
+<!-- YOUR ORIGINAL SECTIONS (UNCHANGED) -->
+
+<!-- ABOUT -->
+<section id="about">
+<h2 class="section-title">About Me</h2>
+
+<div class="about-container">
+
+<div>
+<h3>Hey, I'm Manish 👋</h3>
+<p>I’m an IT student from Nepal, currently studying in Japan.</p>
+<p>I enjoy learning programming, building websites and exploring new technologies.</p>
+</div>
+
+<div>
+<div class="about-card">🌏 Osaka, Japan</div>
+<div class="about-card">🎓 IT Student</div>
+<div class="about-card">💻 Web Development</div>
+<div class="about-card">🚀 Global IT Career</div>
+</div>
+
+</div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+<h2 class="section-title">Skills</h2>
+
+<div class="skills-grid">
+
+<div class="skill-card">
+<h3>HTML</h3>
+<p>Building web page and website structure.</p>
+</div>
+
+<div class="skill-card">
+<h3>CSS</h3>
+<p>Modern UI design.</p>
+</div>
+
+<div class="skill-card">
+<h3>Java</h3>
+<p>Programming fundamentals.</p>
+</div>
+
+<div class="skill-card">
+<h3>Japanese</h3>
+<p>Daily communication & JLPT study.</p>
+</div>
+
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2 class="section-title">Projects</h2>
+
+<div class="projects-grid">
+
+<div class="project-card">
+<div class="project-icon">
+<i class="fas fa-laptop-code"></i>
+</div>
+
+<h3>Portfolio Website</h3>
+
+<p>Modern personal portfolio built with HTML, CSS and JavaScript.</p>
+
+<div class="project-tags">
+<span>HTML</span>
+<span>CSS</span>
+<span>JS</span>
+</div>
+
+<div class="project-links">
+<a href="#">Live</a>
+<a href="#">GitHub</a>
+</div>
+
+</div>
+
+<div class="project-card">
+
+<div class="project-icon">
+<i class="fas fa-database"></i>
+</div>
+
+<h3>Student Management System</h3>
+
+<p>Java web application for managing student records.</p>
+
+<div class="project-tags">
+<span>Java</span>
+<span>SQL</span>
+<span>Servlet</span>
+</div>
+
+<div class="project-links">
+<a href="#">Live</a>
+<a href="#">GitHub</a>
+</div>
+
+</div>
+
+<div class="project-card">
+
+<div class="project-icon">
+<i class="fas fa-globe"></i>
+</div>
+
+<h3>Responsive Website</h3>
+
+<p>Responsive web design project optimized for mobile devices.</p>
+
+<div class="project-tags">
+<span>HTML</span>
+<span>CSS</span>
+<span>Responsive</span>
+</div>
+
+<div class="project-links">
+<a href="#">Live</a>
+<a href="#">GitHub</a>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+<h2 class="section-title">My Journey</h2>
+
+<div class="timeline">
+
+<div class="timeline-container left">
+<div class="timeline-content">
+<h3>Nepal</h3>
+<p>Born and studied in Nepal.</p>
+</div>
+</div>
+
+<div class="timeline-container right">
+<div class="timeline-content">
+<h3>Move to Japan</h3>
+<p>Came to Japan for study.</p>
+</div>
+</div>
+
+<div class="timeline-container left">
+<div class="timeline-content">
+<h3>Learning Technology</h3>
+<p>Studying programming and web development.</p>
+</div>
+</div>
+
+<div class="timeline-container right">
+<div class="timeline-content">
+<h3>Future Goal</h3>
+<p>Become a global IT professional.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<div class="socials">
+
+<a href="https://www.facebook.com/share/1QTuMjx131/?mibextid=wwXIfr" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com/manish_pokhrel1" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://line.me/ti/p/mCVIV17Mzx" target="_blank">
+<i class="fab fa-line"></i>
+</a>
+
+<a href="https://youtube.com/@dajuvaivlogs" target="_blank">
+<i class="fab fa-youtube"></i>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Manish Pokhrel Portfolio
+</footer>
+
+<script>
+
+const text="IT Student in Japan";
+let i=0;
+
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,60);
+}
+}
+
+type();
+
+/* PARTICLE NETWORK */
+
+const canvas=document.getElementById("network");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+let number=110;
+
+class Particle{
+constructor(x,y,dx,dy,size){
+this.x=x;
+this.y=y;
+this.dx=dx;
+this.dy=dy;
+this.size=size;
+}
+
+draw(){
+ctx.fillStyle="#38bdf8";
+ctx.beginPath();
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+ctx.fill();
+}
+
+update(){
+if(this.x>canvas.width||this.x<0) this.dx=-this.dx;
+if(this.y>canvas.height||this.y<0) this.dy=-this.dy;
+
+this.x+=this.dx;
+this.y+=this.dy;
+
+this.draw();
+}
+}
+
+function init(){
+
+particles=[];
+
+for(let i=0;i<number;i++){
+
+let x=Math.random()*canvas.width;
+let y=Math.random()*canvas.height;
+
+let dx=(Math.random()-0.5)*1.5;
+let dy=(Math.random()-0.5)*1.5;
+
+particles.push(new Particle(x,y,dx,dy,2));
+}
+
+}
+
+function connect(){
+
+for(let a=0;a<particles.length;a++){
+
+for(let b=a;b<particles.length;b++){
+
+let dx=particles[a].x-particles[b].x;
+let dy=particles[a].y-particles[b].y;
+
+let distance=dx*dx+dy*dy;
+
+if(distance<12000){
+
+ctx.strokeStyle="rgba(56,189,248,0.15)";
+ctx.lineWidth=1;
+
+ctx.beginPath();
+ctx.moveTo(particles[a].x,particles[a].y);
+ctx.lineTo(particles[b].x,particles[b].y);
+ctx.stroke();
+
+}
+
+}
+
+}
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>p.update());
+
+connect();
+
+requestAnimationFrame(animate);
+
+}
+
+init();
+animate();
+
+</script>
+
+</body>
+</html>
